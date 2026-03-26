@@ -1,33 +1,25 @@
 import random
 
 def generate_instagram_post(product_name, description, price=None):
-    """Instagram post banata hai"""
+    opening = random.choice([
+        f"🚀 Introducing {product_name}!",
+        f"✨ Meet your new favorite — {product_name}!",
+        f"🔥 {product_name} is here and it's amazing!"
+    ])
     
-    emojis = ["✨", "🔥", "💯", "⭐", "🎉"]
+    body = f"💡 {description}"
     
-    templates = [
-        f"🌟 {product_name}! {random.choice(emojis)}\n\n{description}\n\n{f'Price: ₹{price}' if price else ''}\n\n#shoplocal #trending",
-        
-        f"✨ Check out {product_name}! {random.choice(emojis)}\n\n{description}\n\nOrder now! 🛒\n\n#sale #shopnow"
-    ]
+    price_line = f"💰 Special Price: ₹{price}\n🛒 Order now before stock runs out!" if price else "🛒 Limited stock available — grab yours now!"
     
-    return random.choice(templates)
+    tags = f"#{product_name.replace(' ', '')} #shopnow #trending #sale #deals"
+    
+    return f"{opening}\n\n{body}\n\n{price_line}\n\n{tags}"
 
 
 def generate_whatsapp_message(product_name, description, price=None):
-    """WhatsApp message banata hai"""
-    
-    msg = f"*{product_name}* 🌟\n\n"
-    msg += f"{description}\n\n"
-    
+    msg = f"*🌟 {product_name}*\n\n"
+    msg += f"_{description}_\n\n"
     if price:
-        msg += f"💰 Price: ₹{price}\n\n"
-    
-    msg += "📞 Reply to order!"
-    
+        msg += f"💰 *Price: ₹{price}*\n\n"
+    msg += "📦 Limited stock!\n📞 Reply *YES* to order now!"
     return msg
-
-
-# Test
-if __name__ == "__main__":
-    print(generate_instagram_post("Handmade Soap", "100% natural", 299))
