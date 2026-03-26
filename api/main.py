@@ -3,7 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sys
 import os
-
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('punkt_tab')
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from sentiment_analyzer import predict_sentiment
